@@ -1,13 +1,349 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Página HTML</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+padding:20px 50px;
+z-index:999;
+}
+
+nav h1{
+font-size:22px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00ffff;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h2{
+font-size:60px;
+margin-bottom:20px;
+animation:fadeIn 2s ease;
+}
+
+.hero p{
+max-width:700px;
+margin-bottom:30px;
+font-size:18px;
+opacity:0.8;
+}
+
+.btn{
+padding:15px 40px;
+border:none;
+background:#00ffff;
+color:black;
+font-weight:bold;
+cursor:pointer;
+border-radius:30px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+/* GRID */
+
+.section{
+padding:120px 60px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+border-radius:15px;
+padding:30px;
+transition:0.4s;
+backdrop-filter:blur(8px);
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.15);
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+/* COUNTER */
+
+.counter-area{
+display:flex;
+justify-content:center;
+gap:80px;
+text-align:center;
+margin-top:60px;
+}
+
+.counter{
+font-size:50px;
+font-weight:bold;
+}
+
+/* FORM */
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+max-width:500px;
+margin:auto;
+}
+
+input,textarea{
+padding:12px;
+border:none;
+border-radius:8px;
+}
+
+textarea{
+resize:none;
+height:120px;
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+text-align:center;
+padding:40px;
+margin-top:100px;
+}
+
+/* PARTICLES */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+</style>
 </head>
+
 <body>
-    <P>Lorem, ipsum dolor.</P>
-    <br>
-    <p>Lorem ipsum dolor sit amet</p>
+
+<canvas id="bg"></canvas>
+
+<nav>
+<h1>SuperSite</h1>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Serviços</a></li>
+<li><a href="#">Projetos</a></li>
+<li><a href="#">Contato</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h2>Bem-vindo ao Futuro</h2>
+<p>Uma página HTML gigante com CSS e JavaScript tudo junto. Layout moderno, animações, partículas e interação.</p>
+<button class="btn" onclick="alert('Você clicou!')">Explorar</button>
+</section>
+
+<section class="section">
+<h2 style="text-align:center;margin-bottom:60px;">Recursos</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Performance</h3>
+<p>Página rápida com efeitos modernos e design responsivo.</p>
+</div>
+
+<div class="card">
+<h3>Design</h3>
+<p>Interface futurista com gradientes, blur e animações.</p>
+</div>
+
+<div class="card">
+<h3>JavaScript</h3>
+<p>Interatividade completa com animações e lógica dinâmica.</p>
+</div>
+
+<div class="card">
+<h3>Responsivo</h3>
+<p>Funciona em celular, tablet e desktop automaticamente.</p>
+</div>
+
+</div>
+
+<div class="counter-area">
+<div>
+<div class="counter" data-target="1200">0</div>
+<p>Usuários</p>
+</div>
+
+<div>
+<div class="counter" data-target="530">0</div>
+<p>Projetos</p>
+</div>
+
+<div>
+<div class="counter" data-target="98">0</div>
+<p>Satisfação</p>
+</div>
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 style="text-align:center;margin-bottom:60px;">Contato</h2>
+
+<form>
+
+<input type="text" placeholder="Nome">
+<input type="email" placeholder="Email">
+<textarea placeholder="Mensagem"></textarea>
+<button class="btn">Enviar</button>
+
+</form>
+
+</section>
+
+<footer>
+<p>© 2026 SuperSite - HTML gigante</p>
+</footer>
+
+<script>
+
+/* COUNTER */
+
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+const update=()=>{
+const target=+counter.getAttribute("data-target");
+const c=+counter.innerText;
+
+const inc=target/200;
+
+if(c<target){
+counter.innerText=Math.ceil(c+inc);
+setTimeout(update,10);
+}else{
+counter.innerText=target;
+}
+};
+update();
+});
+
+
+/* PARTICLES BACKGROUND */
+
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<120;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*1,
+vy:(Math.random()-0.5)*1,
+size:Math.random()*2
+});
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+});
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener("resize",()=>{
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+});
+
+</script>
+
 </body>
 </html>
